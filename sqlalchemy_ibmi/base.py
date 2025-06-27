@@ -50,6 +50,9 @@ Connection string keywords:
   Defaults to ``False``.
 * ``trim_char_fields`` - If ``True``, all character fields will be returned
   with trailing spaces truncated. Defaults to ``False``.
+* ``ssl`` - If ``1`` a Secure Sockets Layer (SSL) connection will be used to 
+  encrypt all client/server communication. If ``0``, only the password will 
+  be encrypted. Defaults to ``0``.
 
 create-engine arguments:
 
@@ -921,6 +924,7 @@ class IBMiDb2Dialect(default.DefaultDialect):
         "use_system_naming": ("NAM", to_bool, False),
         "trim_char_fields": ("TRIMCHAR", to_bool, None),
         "lob_threshold_kb": ("MAXFIELDLEN", int, None),
+        "ssl": ("SSL", int, 0)
     }
 
     DRIVER_KEYWORDS_SPECIAL = {
